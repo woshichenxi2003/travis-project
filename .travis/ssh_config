@@ -1,0 +1,5 @@
+Host github.com
+User woshichenxi2003@163.com
+StrictHostKeyChecking no
+IdentityFile ~/.ssh/id_rsa
+IdentitiesOnly yes
