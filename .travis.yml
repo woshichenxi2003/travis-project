@@ -1,31 +1,15 @@
 language: node_js
-
 node_js:
-
 - 7.7.1
-
 after_script:
-
-//构建完毕自动将代码分发到远程主机
-
 - scp -o StrictHostKeyChecking=no app.js root@59.110.243.215:/home/www/chenxi
-
 before_install:
-
-//此句去掉即可 travis encrypt-file自动生成
-
-- openssl aes-256-cbc -K $encrypted_204d80cb93e1_key -iv $encrypted_204d80cb93e1_iv
-
-- in .travis/id_rsa.enc -out id_rsa -d
-
-- mv id_rsa ~/.ssh -f
-
-- chmod 600 ~/.ssh/id_rsa
-
-# 配置 ssh
-
+- openssl aes-256-cbc -K $encrypted_047892bf4e9b_key -iv $encrypted_047892bf4e9b_iv
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
 - eval $(ssh-agent)
-
 - ssh-add ~/.ssh/id_rsa
-
+- cp .travis/ssh_config ~/.ssh/config
+# 配置 ssh
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/id_rsa
 - cp .travis/ssh_config ~/.ssh/config
